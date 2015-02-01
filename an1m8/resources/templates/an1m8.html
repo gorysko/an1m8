@@ -1,0 +1,82 @@
+<html>
+    <head>
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="/css/style.css">
+    </head>
+    <body>
+        {% include "templates/loader.html" %}
+        <div class="svg-wrapper fill-w" id="logo-wrapper">
+            <object id="logo-solid-1" class="fill-w" data="/svg/logo_solid_1.svg" type="image/svg+xml" ></object>
+        </div>
+        <div id="viewport" style="display: none;">
+            <div id="intro-view" style="display: none;">
+                <div class="fixed-column">
+                    <h2 class="center">Little bit of motion could be a huge difference</h2>
+                    <p>Animated SVGs had been there for a while, but they have some limitations:</p>
+                    <ul>
+                        <li>no randomness — your animations will always be the same</li>
+                        <li>auto-generated SVGs contain far too many groups/elements — animating them is a huge pain</li>
+                        <li>poor support for some browsers — IE, I am looking at you!</li>
+                    </ul>
+                    <p>These limitaions could be fixed with the help of clojurescript and core.async. At least we hope so)</p>
+                    <p>Core.async works in the IE, which supports inlined svg. Clojurescript has got enough power to deal with
+                        huge number of SVG elements and, of course, it has got a randomizer)</p>
+                    <p>As a proof of this concept, we've animated our logo using this technique. I guess you've noticed that.</p>
+                    <p>We've implemented some other neat animations, you can check them in gallery. Or try creating your own animation by uploading SVG.</p>
+
+                    <div class="center" style="margin-top: 4em; margin-bottom: 4em;">
+                        <a id="gallery-btn" href="#" class="button">Browse gallery</a>
+                        <a id="editor-btn" href="#" class="button">Create animation</a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="gallery-view" style="display: none;">
+                <div class="full-w center" style="margin: 1em;">
+                    <div id="anim-list"></div>
+                </div>
+            </div>
+
+
+            <div id="editor-view" style="display: none;">
+                <div class="fixed-column">
+                    <h1>:-(</h1>
+                    <p>Unfortunately, we ran out of time. </p>
+                    <p>Please, come back later, or follow us on Github/Twitter to be informed about AN1M8's faith.</p>
+                    <!-- <h1>I am the editor</h1>
+
+                    <form action="/upload" enctype="multipart/form-data" method="POST">
+                        <input id="file" name="file" type="file" />
+                        <input type="submit" value="upload" />
+                    </form>
+                    -->
+                </div>
+
+            </div>
+
+            <footer class="center">&copy; 2014, by <a href="https://twitter.com/__ndrw">@ndrew</a> & <a href="https://twitter.com/gorysko">@gorysko</a> for <a href="https://clojurecup.com">ClojureCup</a>.</footer>
+        </div>
+
+        <!--[if IE]><script type="text/javascript" src='/css/ie.js'></script><![endif]-->
+
+
+        {% script "/js/goog/base.js" %}
+        {% script "/js/app.js" %}
+        <script type="text/javascript">
+            goog.require("an1m8.app");
+            goog.require("an1m8.core");
+        </script>
+
+        <script type="text/javascript">
+            var context = "{{servlet-context}}";
+
+            var initial_view = ""; // "gallery-view";
+            var initial_action = ""; // "init_gallery_page";
+
+            an1m8.app.run(an1m8.core.app_fn);
+        </script>
+
+
+
+    </body>
+</html>

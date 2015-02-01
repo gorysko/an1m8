@@ -1,0 +1,15 @@
+*.class
+*.jar
+*.log
+.lein-deps-sum
+.lein-plugins/
+.lein-repl-history
+/.env
+/.lein-*
+/checkouts
+/classes/
+/lib/
+/out/
+/target/
+pom.xml
+resources/public/js/
